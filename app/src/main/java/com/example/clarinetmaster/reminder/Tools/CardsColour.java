@@ -2,6 +2,8 @@ package com.example.clarinetmaster.reminder.Tools;
 
 import com.example.clarinetmaster.reminder.R;
 
+import java.util.Calendar;
+
 public class CardsColour {
 
     /**
@@ -20,8 +22,8 @@ public class CardsColour {
         return instance;
     }
 
-    public static int getColour(DateTime date){
-        long remains = date.getRemainingTime();
+    public static int getColour(Calendar date){
+        long remains = Utils.getRemainingTime(date);
         if(remains < 0) return passed;
         if(remains < 2) return urgent;
         if(remains < 4) return near;

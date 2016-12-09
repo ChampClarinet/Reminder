@@ -29,13 +29,13 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginStart="24dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/eieiei" />
+                android:src="@drawable/alarm_label" />
 
             <ImageView
                 android:id="@+id/warning"
                 android:layout_width="41dp"
                 android:layout_height="123dp"
-                android:src="@drawable/oh" />
+                android:src="@drawable/warn_sign" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -44,21 +44,21 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/time"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Time" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="Name" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/desc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -72,7 +72,7 @@
                 android:layout_height="124dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
-                android:src="@drawable/oh" />
+                android:src="@drawable/warn_sign" />
         </LinearLayout>
 
 

@@ -10,6 +10,7 @@ import com.example.clarinetmaster.reminder.Models.Event;
 import com.example.clarinetmaster.reminder.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -52,7 +53,8 @@ public class EventList {
             String title = cursor.getString(cursor.getColumnIndex(mHelper.COL_TITLE));
             String detail = cursor.getString(cursor.getColumnIndex(mHelper.COL_DETAIL));
             Long dateLong = cursor.getLong(cursor.getColumnIndex(mHelper.COL_DATE));
-            DateTime datetime = new DateTime(new Date(dateLong));
+            Calendar datetime = Calendar.getInstance();
+            datetime.setTimeInMillis(dateLong);
 
             Event event = new Event(id, title, detail, datetime);
 
@@ -89,7 +91,7 @@ public class EventList {
 
     public static void insertData(Event event){
         ContentValues cv = new ContentValues();
-        cv.put(DatabaseHelper.COL_DATE, event.getDate().getTime());
+        cv.put(DatabaseHelper.COL_DATE, event.getDate().getTimeInMillis());
         cv.put(DatabaseHelper.COL_DETAIL, event.getDetial());
         cv.put(DatabaseHelper.COL_TITLE, event.getTitle());
         mDb.insert(DatabaseHelper.TABLE_NAME, null, cv);
@@ -98,7 +100,7 @@ public class EventList {
 
     public static void updateData(int id, Event event){
         ContentValues cv = new ContentValues();
-        cv.put(DatabaseHelper.COL_DATE, event.getDate().getTime());
+        cv.put(DatabaseHelper.COL_DATE, event.getDate().getTimeInMillis());
         cv.put(DatabaseHelper.COL_DETAIL, event.getDetial());
         cv.put(DatabaseHelper.COL_TITLE, event.getTitle());
         mDb.insert(DatabaseHelper.TABLE_NAME, null, cv);

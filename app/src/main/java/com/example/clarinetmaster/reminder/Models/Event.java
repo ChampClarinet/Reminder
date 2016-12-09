@@ -1,8 +1,6 @@
 package com.example.clarinetmaster.reminder.Models;
 
-import com.example.clarinetmaster.reminder.Tools.DateTime;
-
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created by computer on 20/11/2559.
@@ -12,15 +10,15 @@ public class Event {
     private int id;
     private String title;
     private String detial;
-    private DateTime date;
+    private Calendar date;
 
-    public Event(String title, String detial, DateTime date) {
+    public Event(String title, String detial, Calendar date) {
         this.title = title;
         this.detial = detial;
         this.date = date;
     }
 
-    public Event(int id, String title, String detial, DateTime date) {
+    public Event(int id, String title, String detial, Calendar date) {
         this.id = id;
         this.title = title;
         this.detial = detial;
@@ -35,7 +33,7 @@ public class Event {
         return detial;
     }
 
-    public DateTime getDate() {
+    public Calendar getDate() {
         return date;
     }
 

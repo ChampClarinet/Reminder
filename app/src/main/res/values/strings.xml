@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Reminder</string>
     <string name="action_search">Search</string>
+    <string name="title_activity_add_event">AddEventActivity</string>
+    <string name="name">Name</string>
+    <string name="details">Details</string>
 </resources>
