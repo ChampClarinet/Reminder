@@ -9,7 +9,7 @@ import java.util.Calendar;
  * Created by computer on 20/11/2559.
  */
 
-public class Event implements Serializable{
+public class Event{
     private int id;
     private String title;
     private String detial;
@@ -26,6 +26,10 @@ public class Event implements Serializable{
         this.title = title;
         this.detial = detial;
         this.date = date;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {

@@ -2,15 +2,12 @@ package com.example.clarinetmaster.reminder;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
@@ -18,11 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.clarinetmaster.reminder.Adapters.CardAdapter;
 
-import com.example.clarinetmaster.reminder.Databases.DatabaseHelper;
 import com.example.clarinetmaster.reminder.Models.Event;
 import com.example.clarinetmaster.reminder.Tools.EventList;
 import com.fourmob.datetimepicker.date.DatePickerDialog;
@@ -30,11 +27,11 @@ import com.sleepbot.datetimepicker.time.RadialPickerLayout;
 import com.sleepbot.datetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView feedRecyclerView;
+    TextView noItemLabel;
 
     Calendar time;
     DatePickerDialog mDatePicker;
@@ -54,13 +51,19 @@ public class MainActivity extends AppCompatActivity {
                 addEventDialog();
             }
         });
+        noItemLabel = (TextView) findViewById(R.id.no_item_text_view);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         feedRecyclerView = (RecyclerView) findViewById(R.id.feedRecycler);
         feedRecyclerView.setHasFixedSize(true);
         feedRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         CardAdapter adapter = new CardAdapter(this);
         feedRecyclerView.setAdapter(adapter);
-
+        if(adapter.getItemCount() == 0) noItemLabel.setVisibility(View.VISIBLE);
+        else noItemLabel.setVisibility(View.GONE);
     }
 
     private void addEventDialog() {
@@ -111,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
                             time
                     );
                     EventList.insertData(newEvent);
+                    noItemLabel.setVisibility(View.GONE);
                     dialog.dismiss();
-                    //refetch
                 }
             }
         });

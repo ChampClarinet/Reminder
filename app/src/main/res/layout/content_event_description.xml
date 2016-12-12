@@ -13,5 +13,9 @@
     tools:context="com.example.clarinetmaster.reminder.EventDescriptionActivity"
     tools:showIn="@layout/activity_event_description">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

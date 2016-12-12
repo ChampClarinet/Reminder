@@ -15,6 +15,14 @@
     <string name="event_deleted">Event has been deleted.</string>
     <string name="event_updated">Event has been updated.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="due_date_label">Due date : </string>
+    <string name="day_left_label">Day left : </string>
+    <string name="days">day(s)</string>
+    <string name="month">month(s)</string>
+    <string name="left">left</string>
+    <string name="year">years</string>
+    <string name="confirm_delete_label">Confirm Deletion</string>
+    <string name="confirm_delete_message">Are you sure to delete this event?</string>
+    <string name="yes_button">YES</string>
+    <string name="no_item"><![CDATA[<< no item >>]]></string>
 </resources>
