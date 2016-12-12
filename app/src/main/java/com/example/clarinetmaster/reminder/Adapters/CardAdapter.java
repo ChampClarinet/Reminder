@@ -74,7 +74,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
             }
         });
         CardsColour colour = CardsColour.getInstance();
-        holder.card.setCardBackgroundColor(colour.getColour(curItem.getDate()));
+        holder.card.setBackgroundResource(colour.getColour(curItem.getDate()));
         if(Utils.getRemainingTime(curItem.getDate()) > 24 * 60 * 60 * 1000 || Utils.getRemainingTime(curItem.getDate()) < 0) holder.warn1.setVisibility(View.GONE);
     }
     @Override
