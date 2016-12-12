@@ -108,7 +108,6 @@ public class EventList {
         cv.put(DatabaseHelper.COL_DATE, event.getDate().getTimeInMillis());
         cv.put(DatabaseHelper.COL_DETAIL, event.getDetial());
         cv.put(DatabaseHelper.COL_TITLE, event.getTitle());
-        mDb.insert(DatabaseHelper.TABLE_NAME, null, cv);
         mDb.update(DatabaseHelper.TABLE_NAME, cv, DatabaseHelper.COL_ID + " = " + id, null);
         loadFromDatabase();
         Toast.makeText(mContext, R.string.event_updated, Toast.LENGTH_SHORT).show();
@@ -118,6 +117,10 @@ public class EventList {
         mDb.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.COL_ID + " = " + id, null);
         loadFromDatabase();
         Toast.makeText(mContext, R.string.event_deleted, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void clearData(){
+        mDb.delete(DatabaseHelper.TABLE_NAME,null,null);
     }
 
 }

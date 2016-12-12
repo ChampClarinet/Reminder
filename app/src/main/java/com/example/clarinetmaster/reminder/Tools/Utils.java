@@ -3,6 +3,8 @@ package com.example.clarinetmaster.reminder.Tools;
 import android.text.format.DateUtils;
 import android.util.Log;
 
+import com.example.clarinetmaster.reminder.Models.Event;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

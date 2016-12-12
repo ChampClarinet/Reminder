@@ -104,19 +104,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String label = eventLabelEditText.getText().toString();
-                if(label.length() < 0){
-                    Toast.makeText(getApplicationContext(), R.string.label_blank_toast, Toast.LENGTH_SHORT).show();
-                    return;
-                }else{
+                if(label.length() > 0){
                     Event newEvent = new Event(
-                            eventLabelEditText.getText().toString(),
+                            label,
                             eventDescEditText.getText().toString(),
                             time
                     );
                     EventList.insertData(newEvent);
                     noItemLabel.setVisibility(View.GONE);
                     dialog.dismiss();
-                }
+                }else Toast.makeText(MainActivity.this, R.string.label_blank_toast, Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -22,7 +22,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     private static final String TAG = CardAdapter.class.getSimpleName();
 
-    private EventList eventList;
     private Context context;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -47,7 +46,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     public CardAdapter(Context context){
         this.context = context;
-        this.eventList = EventList.getInstance(context);
     }
 
     @Override
@@ -60,6 +58,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        EventList eventList = EventList.getInstance(context);
         Event curItem = eventList.getEventList().get(position);
         holder.label.setText(curItem.getTitle());
         holder.time.setText(Utils.dateLabel(curItem.getDate()));
@@ -79,6 +78,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     }
     @Override
     public int getItemCount() {
+        EventList eventList = EventList.getInstance(context);
         return eventList.getEventList().size();
     }
 }

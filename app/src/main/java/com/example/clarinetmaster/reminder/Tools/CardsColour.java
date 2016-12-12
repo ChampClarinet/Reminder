@@ -1,5 +1,7 @@
 package com.example.clarinetmaster.reminder.Tools;
 
+import android.util.Log;
+
 import com.example.clarinetmaster.reminder.R;
 
 import java.util.Calendar;
@@ -25,6 +27,7 @@ public class CardsColour {
     public static int getColour(Calendar date){
         long remains = Utils.getRemainingTime(date);
         if(remains < 0) return passed;
+        remains /=  24 * 60 * 60 * 1000;
         if(remains < 2) return urgent;
         if(remains < 4) return near;
         if(remains < 7) return quiteNear;
