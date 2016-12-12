@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,6 +23,8 @@ import java.util.Date;
  */
 
 public class EventList {
+
+    private static final String TAG = EventList.class.getSimpleName();
 
     private static Context mContext;
 
@@ -89,6 +92,24 @@ public class EventList {
         mEventList = sortArray;
     }
 
+    public static Event searchEventByID(int id){
+
+        Cursor cursor = mDb.query(DatabaseHelper.TABLE_NAME, null, DatabaseHelper.COL_ID + " = " + id, null, null, null, null);
+
+        if(cursor.getCount() > 1) Log.e(TAG+" searchEventByID", "Duplicated event id");
+
+        cursor.moveToNext();
+
+        String title = cursor.getString(cursor.getColumnIndex(mHelper.COL_TITLE));
+        String detail = cursor.getString(cursor.getColumnIndex(mHelper.COL_DETAIL));
+        Long dateLong = cursor.getLong(cursor.getColumnIndex(mHelper.COL_DATE));
+        Calendar datetime = Calendar.getInstance();
+        datetime.setTimeInMillis(dateLong);
+
+        return new Event(id, title, detail, datetime);
+
+    }
+
     public static ArrayList<Event> getEventList() {
         return mEventList;
     }
@@ -101,6 +122,7 @@ public class EventList {
         mDb.insert(DatabaseHelper.TABLE_NAME, null, cv);
         loadFromDatabase();
         Toast.makeText(mContext, R.string.event_created, Toast.LENGTH_SHORT).show();
+        Utils.createNotification(mContext, event);
     }
 
     public static void updateData(int id, Event event){
@@ -111,12 +133,14 @@ public class EventList {
         mDb.update(DatabaseHelper.TABLE_NAME, cv, DatabaseHelper.COL_ID + " = " + id, null);
         loadFromDatabase();
         Toast.makeText(mContext, R.string.event_updated, Toast.LENGTH_SHORT).show();
+        Utils.createNotification(mContext, event);
     }
 
     public static void deleteData(int id){
         mDb.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.COL_ID + " = " + id, null);
         loadFromDatabase();
         Toast.makeText(mContext, R.string.event_deleted, Toast.LENGTH_SHORT).show();
+        Utils.cancelNotification(mContext, id);
     }
 
     public static void clearData(){

@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.clarinetmaster.reminder.EventDescriptionActivity;
-import com.example.clarinetmaster.reminder.MainActivity;
 import com.example.clarinetmaster.reminder.Models.Event;
 import com.example.clarinetmaster.reminder.R;
 import com.example.clarinetmaster.reminder.Tools.CardsColour;
@@ -74,7 +73,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         });
         CardsColour colour = CardsColour.getInstance();
         holder.card.setBackgroundResource(colour.getColour(curItem.getDate()));
-        if(Utils.getRemainingTime(curItem.getDate()) > 24 * 60 * 60 * 1000 || Utils.getRemainingTime(curItem.getDate()) < 0) holder.warn1.setVisibility(View.GONE);
+        if(Utils.getRemainingTimeLong(curItem.getDate()) > 24 * 60 * 60 * 1000 || Utils.getRemainingTimeLong(curItem.getDate()) < 0) holder.warn1.setVisibility(View.GONE);
     }
     @Override
     public int getItemCount() {

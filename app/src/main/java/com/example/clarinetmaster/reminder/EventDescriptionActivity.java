@@ -69,7 +69,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
                         EventList list = EventList.getInstance(getApplicationContext());
                         int position = pager.getCurrentItem();
                         list.deleteData(list.getEventList().get(position).getId());
-                        finish();
+                        finishActivity(0);
                         dialog.dismiss();
                     }
                 });
@@ -171,7 +171,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
                     );
                     EventList.updateData(curItem.getId(), newEvent);
                     dialog.dismiss();
-                    finish();
+                    finishActivity(0);
                 } else
                     Toast.makeText(EventDescriptionActivity.this, R.string.label_blank_toast, Toast.LENGTH_SHORT).show();
             }

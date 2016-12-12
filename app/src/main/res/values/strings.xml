@@ -27,5 +27,6 @@
     <string name="year">years</string>
 
     <string name="no_item"><![CDATA[<< no item >>]]></string>
+    <string name="event_coming_up">An event is coming up!</string>
 
 </resources>

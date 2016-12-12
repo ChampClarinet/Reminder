@@ -1,20 +1,15 @@
 package com.example.clarinetmaster.reminder.Tools;
 
-import android.text.format.DateUtils;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.example.clarinetmaster.reminder.Models.Event;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
-import static android.text.format.DateUtils.FORMAT_NUMERIC_DATE;
-import static android.text.format.DateUtils.FORMAT_SHOW_DATE;
-import static android.text.format.DateUtils.FORMAT_SHOW_YEAR;
-import static android.text.format.DateUtils.MINUTE_IN_MILLIS;
 
 public class Utils {
 
@@ -23,13 +18,13 @@ public class Utils {
         return format.format(dateTime.getTime());
     }
 
-    public static long getRemainingTime(Calendar calendar){
+    public static long getRemainingTimeLong(Calendar calendar){
         Calendar now = Calendar.getInstance();
         return calendar.getTimeInMillis() - now.getTimeInMillis();
     }
 
     public static String getRemainTimeLabelText(Calendar calendar) {
-        long diff = getRemainingTime(calendar);
+        long diff = getRemainingTimeLong(calendar);
         Log.i("diff", ""+diff);
         long days = diff / (24 * 60 * 60 * 1000);
         if(diff < 0){
@@ -54,6 +49,44 @@ public class Utils {
         if(diff > 60000) out += Long.toString(diff / 60000) + " minute(s) ";
         out += "left.";
         return out;
+    }
+
+    public static int createNotification(Context context, Event event){
+
+        Calendar triggerTime = event.getDate();
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+
+        Intent serviceIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
+
+        serviceIntent.putExtra("event", event);
+
+        int notificationID = event.getId();
+        int cancel = PendingIntent.FLAG_CANCEL_CURRENT;
+
+        PendingIntent broadcast = PendingIntent.getBroadcast(context, notificationID, serviceIntent, cancel);
+
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), broadcast);
+
+        Log.i("notificationCreator", "Notification created at "+triggerTime.getTime());
+
+        return notificationID;
+
+    }
+
+    public static void cancelNotification(Context context, int eventID){
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent cancelServiceIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
+        PendingIntent cancelServicePendingIntent = PendingIntent.getBroadcast(
+                context,
+                eventID,
+                cancelServiceIntent,
+                0
+        );
+        alarmManager.cancel(cancelServicePendingIntent);
+        Log.i("NotiCancellation", "Notification canceled");
+
     }
 
 }
