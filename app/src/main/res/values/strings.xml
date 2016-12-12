@@ -1,7 +1,20 @@
 <resources>
     <string name="app_name" translatable="false">Reminder</string>
+    <string name="title_activity_event_description">Event Description</string>
+
     <string name="action_search">Search</string>
-    <string name="title_activity_add_event">AddEventActivity</string>
+
     <string name="name">Name</string>
     <string name="details">Details</string>
+
+    <string name="cancel_button">CANCEL</string>
+    <string name="save_button">SAVE</string>
+
+    <string name="label_blank_toast">Please type the event label</string>
+    <string name="event_created">Event has been created.</string>
+    <string name="event_deleted">Event has been deleted.</string>
+    <string name="event_updated">Event has been updated.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

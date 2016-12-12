@@ -4,6 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.clarinetmaster.reminder.Databases.DatabaseHelper;
 import com.example.clarinetmaster.reminder.Models.Event;
@@ -96,6 +100,7 @@ public class EventList {
         cv.put(DatabaseHelper.COL_TITLE, event.getTitle());
         mDb.insert(DatabaseHelper.TABLE_NAME, null, cv);
         loadFromDatabase();
+        Toast.makeText(mContext, R.string.event_created, Toast.LENGTH_SHORT).show();
     }
 
     public static void updateData(int id, Event event){
@@ -106,11 +111,13 @@ public class EventList {
         mDb.insert(DatabaseHelper.TABLE_NAME, null, cv);
         mDb.update(DatabaseHelper.TABLE_NAME, cv, DatabaseHelper.COL_ID + " = " + id, null);
         loadFromDatabase();
+        Toast.makeText(mContext, R.string.event_updated, Toast.LENGTH_SHORT).show();
     }
 
     public static void deleteData(int id){
         mDb.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper.COL_ID + " = " + id, null);
         loadFromDatabase();
+        Toast.makeText(mContext, R.string.event_deleted, Toast.LENGTH_SHORT).show();
     }
 
 }
