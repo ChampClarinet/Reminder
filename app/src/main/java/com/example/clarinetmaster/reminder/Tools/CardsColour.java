@@ -11,6 +11,7 @@ public class CardsColour {
      */
 
     private static CardsColour instance = null;
+
     private static final int far = R.color.codeGreen;
     private static final int quiteNear = R.color.codeYellow;
     private static final int near = R.color.codeOrange;

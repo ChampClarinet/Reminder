@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,13 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.clarinetmaster.reminder.Adapters.PagerAdapter;
 import com.example.clarinetmaster.reminder.Models.Event;
 import com.example.clarinetmaster.reminder.Tools.EventList;
-import com.example.clarinetmaster.reminder.Tools.Utils;
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.sleepbot.datetimepicker.time.RadialPickerLayout;
 import com.sleepbot.datetimepicker.time.TimePickerDialog;
@@ -49,14 +46,15 @@ public class EventDescriptionActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        final int startPosition = getIntent().getIntExtra("curPosition", 0);
+        int startPosition = getIntent().getIntExtra("curPosition", 0);
 
-        final PagerAdapter adapter = new PagerAdapter(this, getSupportFragmentManager());
+        PagerAdapter adapter = new PagerAdapter(this, getSupportFragmentManager());
         pager = (ViewPager) findViewById(R.id.view_pager);
         pager.setCurrentItem(startPosition);
         pager.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setBackgroundResource(R.color.danger);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,8 +67,8 @@ public class EventDescriptionActivity extends AppCompatActivity {
                         EventList list = EventList.getInstance(getApplicationContext());
                         int position = pager.getCurrentItem();
                         list.deleteData(list.getEventList().get(position).getId());
-                        finishActivity(0);
                         dialog.dismiss();
+                        finish();
                     }
                 });
                 dialog.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
@@ -105,13 +103,15 @@ public class EventDescriptionActivity extends AppCompatActivity {
     private void editDialog(int position) {
 
         EventList menu = EventList.getInstance(this);
-        final Event curItem = menu.getEventList().get(position);
-        time = Calendar.getInstance();
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        final Event curItem = menu.getEventList().get(position);
+        time = Calendar.getInstance();
+
         View layout = inflater.inflate(R.layout.event_form_layout, null);
-        final ImageView dateImageView = (ImageView) layout.findViewById(R.id.date_image_view);
+        ImageView dateImageView = (ImageView) layout.findViewById(R.id.date_image_view);
         ImageView timeImageView = (ImageView) layout.findViewById(R.id.time_image_view);
         final EditText eventLabelEditText = (EditText) layout.findViewById(R.id.event_label_edit_text);
         final EditText eventDescEditText = (EditText) layout.findViewById(R.id.detail_edit_text);
@@ -137,8 +137,19 @@ public class EventDescriptionActivity extends AppCompatActivity {
             }
         };
 
-        mDatePicker = DatePickerDialog.newInstance(onDateSet, time.get(Calendar.YEAR), time.get(Calendar.MONTH), time.get(Calendar.DAY_OF_MONTH), false);
-        mTimePicker = TimePickerDialog.newInstance(onTimeSet, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true, false);
+        mDatePicker = DatePickerDialog.newInstance(
+                onDateSet,
+                time.get(Calendar.YEAR),
+                time.get(Calendar.MONTH),
+                time.get(Calendar.DAY_OF_MONTH),
+                false
+        );
+        mTimePicker = TimePickerDialog.newInstance(onTimeSet,
+                time.get(Calendar.HOUR_OF_DAY),
+                time.get(Calendar.MINUTE),
+                true,
+                false
+        );
 
         dateImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,9 +182,8 @@ public class EventDescriptionActivity extends AppCompatActivity {
                     );
                     EventList.updateData(curItem.getId(), newEvent);
                     dialog.dismiss();
-                    finishActivity(0);
-                } else
-                    Toast.makeText(EventDescriptionActivity.this, R.string.label_blank_toast, Toast.LENGTH_SHORT).show();
+                    finish();
+                } else Toast.makeText(EventDescriptionActivity.this, R.string.label_blank_toast, Toast.LENGTH_SHORT).show();
             }
         });
 

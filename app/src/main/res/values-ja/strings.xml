@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Reminder</string>
     <string name="action_search">探索</string>
+    <string name="action_edit">編集</string>
+    <string name="cancel_button">取り消し</string>
+    <string name="confirm_delete_label">削除を確認</string>
+    <string name="confirm_delete_message">このイベントを削除でよろしいですか？</string>
+    <string name="day_left_label">日後</string>
+    <string name="days">日</string>
+    <string name="details">細目</string>
+    <string name="due_date_label">期日</string>
+    <string name="event_coming_up">最近イベントがある！</string>
+    <string name="event_created">このイベントを作成されました。</string>
+    <string name="event_deleted">このイベントを削除されました。</string>
+    <string name="event_updated">このイベントを更新されました。</string>
+    <string name="label_blank_toast">イベントのラベルをタイプしてください。</string>
+    <string name="left">後</string>
+    <string name="month">月</string>
+    <string name="name">イベントのラベル</string>
+    <string name="no_item">- イベントはまだありません -</string>
+    <string name="save_button">保存</string>
+    <string name="title_activity_event_description">イベントの詳細</string>
+    <string name="year">年</string>
+    <string name="yes_button">はい</string>
+    <string name="ago">前</string>
+    <string name="just_passed">たった今</string>
+    <string name="prefix_passed"></string>
+    <string name="now">開始してる！！！</string>
+    <string name="hours">時間</string>
+    <string name="minutes">分</string>
+    <string name="app_name">リマインダー</string>
+    <string name="japanese_toki">時</string>
 </resources>

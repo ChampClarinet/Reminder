@@ -26,19 +26,18 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView label;
+        public TextView date;
         public TextView time;
-        public TextView desc;
         public CardView card;
-        public ImageView warn1;
-        public ImageView warn2;
+        public ImageView warn;
 
         public ViewHolder(View itemView) {
             super(itemView);
             label = (TextView) itemView.findViewById(R.id.label);
+            date = (TextView) itemView.findViewById(R.id.date);
             time = (TextView) itemView.findViewById(R.id.time);
-            desc = (TextView) itemView.findViewById(R.id.desc);
             card = (CardView) itemView.findViewById(R.id.card_view);
-            warn1 = (ImageView) itemView.findViewById(R.id.warning);
+            warn = (ImageView) itemView.findViewById(R.id.warning);
         }
 
     }
@@ -60,9 +59,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         EventList eventList = EventList.getInstance(context);
         Event curItem = eventList.getEventList().get(position);
         holder.label.setText(curItem.getTitle());
-        holder.time.setText(Utils.dateLabel(curItem.getDate()));
-        if(curItem.getDetial().length() > 0) holder.desc.setText(curItem.getDetial());
-        else holder.desc.setVisibility(View.GONE);
+        holder.date.setText(Utils.dateLabel(context, curItem.getDate()));
+        holder.time.setText(Utils.timeLabel(context, curItem.getDate()));
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +71,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         });
         CardsColour colour = CardsColour.getInstance();
         holder.card.setBackgroundResource(colour.getColour(curItem.getDate()));
-        if(Utils.getRemainingTimeLong(curItem.getDate()) > 24 * 60 * 60 * 1000 || Utils.getRemainingTimeLong(curItem.getDate()) < 0) holder.warn1.setVisibility(View.GONE);
+        if(Utils.getRemainingTimeLong(curItem.getDate()) > 24 * 60 * 60 * 1000 || Utils.getRemainingTimeLong(curItem.getDate()) < 0) holder.warn.setVisibility(View.GONE);
     }
     @Override
     public int getItemCount() {

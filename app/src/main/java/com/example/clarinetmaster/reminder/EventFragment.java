@@ -9,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.clarinetmaster.reminder.Models.Event;
 import com.example.clarinetmaster.reminder.Tools.Utils;
 
 import java.util.Calendar;
-import java.util.Date;
 
 
 /**
@@ -38,7 +36,6 @@ public class EventFragment extends Fragment {
 
 
     public EventFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -49,10 +46,13 @@ public class EventFragment extends Fragment {
     public static EventFragment newInstance(String title, long timeInMillis, String description) {
         EventFragment fragment = new EventFragment();
         Bundle args = new Bundle();
+
         args.putString(ARG_TITLE, title);
         args.putLong(ARG_DATE, timeInMillis);
         args.putString(ARG_DESC, description);
+
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -84,7 +84,7 @@ public class EventFragment extends Fragment {
         Calendar time = Calendar.getInstance();
         time.setTimeInMillis(mDate);
         titleTextView.setText(mTitle);
-        dayLeftTextView.setText(Utils.getRemainTimeLabelText(time));
+        dayLeftTextView.setText(Utils.getRemainTimeLabelText(getContext(), time));
         descTextView.setText(mDesc);
 
     }

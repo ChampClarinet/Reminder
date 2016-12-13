@@ -1,7 +1,5 @@
 package com.example.clarinetmaster.reminder.Models;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.Calendar;
 

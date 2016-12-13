@@ -27,7 +27,7 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <receiver android:name=".Reciever.AlarmReciever">
+        <receiver android:name=".Reciever.AlarmReceiver">
             <intent-filter>
                 <action android:name="android.media.action.DISPLAY_NOTIFICATION" />
             </intent-filter>

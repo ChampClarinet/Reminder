@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Reminder</string>
     <string name="action_search">ค้นหา</string>
+    <string name="action_edit">แก้ไข</string>
+    <string name="confirm_delete_label">ยืนยันการลบ</string>
+    <string name="cancel_button">ยกเลิก</string>
+    <string name="confirm_delete_message">คุณแน่ใจหรือไม่ที่จะลบการนัดหมายนี้</string>
+    <string name="day_left_label">เหลืออีก</string>
+    <string name="days">วัน</string>
+    <string name="details">รายละเอียด</string>
+    <string name="due_date_label">วันนัดหมาย</string>
+    <string name="event_coming_up">ใกล้ถึงเวลาแล้ว</string>
+    <string name="event_created">สร้างการนัดหมายแล้ว</string>
+    <string name="event_deleted">ลบการนัดหมายแล้ว</string>
+    <string name="event_updated">แก้ไขการนัดหมายแล้ว</string>
+    <string name="label_blank_toast">โปรดกรอกชื่อการนัดหมาย</string>
+    <string name="month">เดือน</string>
+    <string name="name">ชื่อการนัดหมาย</string>
+    <string name="no_item">- ไม่มีการนัดหมาย -</string>
+    <string name="save_button">บันทึก</string>
+    <string name="title_activity_event_description">รายละเอียด</string>
+    <string name="year">ปี</string>
+    <string name="yes_button">ตกลง</string>
+    <string name="just_passed">เมื่อสักครู่</string>
+    <string name="prefix_passed">ผ่านมาแล้ว</string>
+    <string name="now">กำลังจะเริ่ม</string>
+    <string name="ago">ที่แล้ว</string>
+    <string name="hours">ชั่วโมง</string>
+    <string name="minutes">นาที</string>
+    <string name="app_name">Reminder</string>
+    <string name="left"></string>
+    <string name="thai_o_clock">นาฬิกา</string>
 </resources>

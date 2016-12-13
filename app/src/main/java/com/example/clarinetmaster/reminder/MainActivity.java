@@ -57,11 +57,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        CardAdapter adapter = new CardAdapter(this);
+
         feedRecyclerView = (RecyclerView) findViewById(R.id.feedRecycler);
         feedRecyclerView.setHasFixedSize(true);
         feedRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        CardAdapter adapter = new CardAdapter(this);
         feedRecyclerView.setAdapter(adapter);
+
         if(adapter.getItemCount() == 0) noItemLabel.setVisibility(View.VISIBLE);
         else noItemLabel.setVisibility(View.GONE);
     }
@@ -72,14 +75,27 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+
         View layout = inflater.inflate(R.layout.event_form_layout, null);
-        final ImageView dateImageView = (ImageView) layout.findViewById(R.id.date_image_view);
+        ImageView dateImageView = (ImageView) layout.findViewById(R.id.date_image_view);
         ImageView timeImageView = (ImageView) layout.findViewById(R.id.time_image_view);
         final EditText eventLabelEditText = (EditText) layout.findViewById(R.id.event_label_edit_text);
         final EditText eventDescEditText = (EditText) layout.findViewById(R.id.detail_edit_text);
 
-        mDatePicker = DatePickerDialog.newInstance(onDateSet, time.get(Calendar.YEAR), time.get(Calendar.MONTH), time.get(Calendar.DAY_OF_MONTH), false);
-        mTimePicker = TimePickerDialog.newInstance(onTimeSet, time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), true, false);
+        mDatePicker = DatePickerDialog.newInstance(
+                onDateSet,
+                time.get(Calendar.YEAR),
+                time.get(Calendar.MONTH),
+                time.get(Calendar.DAY_OF_MONTH),
+                false
+        );
+        mTimePicker = TimePickerDialog.newInstance(
+                onTimeSet,
+                time.get(Calendar.HOUR_OF_DAY),
+                time.get(Calendar.MINUTE),
+                true,
+                false
+        );
 
         dateImageView.setOnClickListener(new View.OnClickListener() {
             @Override

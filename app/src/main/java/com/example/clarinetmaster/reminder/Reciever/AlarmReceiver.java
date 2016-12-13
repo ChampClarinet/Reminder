@@ -14,13 +14,12 @@ import com.example.clarinetmaster.reminder.Models.Event;
 import com.example.clarinetmaster.reminder.R;
 import com.example.clarinetmaster.reminder.Tools.EventList;
 
-public class AlarmReciever extends BroadcastReceiver{
+public class AlarmReceiver extends BroadcastReceiver{
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
         Event curItem = (Event) intent.getExtras().getSerializable("event");
-        EventList menu = EventList.getInstance(context);
 
         Intent notificationIntent = new Intent(context, EventDescriptionActivity.class);
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
@@ -31,8 +30,8 @@ public class AlarmReciever extends BroadcastReceiver{
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
         Notification notification = builder.setContentTitle(curItem.getTitle())
-                .setContentText("time for "+curItem.getTitle())
-                .setTicker(context.getString(R.string.event_coming_up))
+                .setTicker(curItem.getTitle())
+                .setContentText(context.getString(R.string.event_coming_up))
                 .setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND)
                 .setSmallIcon(R.mipmap.ic_launcher)

@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name" translatable="false">Reminder</string>
-    <string name="title_activity_event_description">Event Description</string>
 
-    <string name="action_search">Search</string>
+    <string name="app_name">Reminder</string>
+    <string name="title_activity_event_description">Event Description</string>
 
     <string name="name">Name</string>
     <string name="details">Details</string>
@@ -12,21 +11,31 @@
     <string name="action_edit">EDIT</string>
     <string name="yes_button">YES</string>
 
-    <string name="label_blank_toast">ERROR Event name can NOT blank!</string>
     <string name="event_created">Event has been created.</string>
     <string name="event_deleted">Event has been deleted.</string>
     <string name="event_updated">Event has been updated.</string>
     <string name="confirm_delete_label">Confirm Deletion</string>
     <string name="confirm_delete_message">Are you sure to delete this event?</string>
+    <string name="label_blank_toast">ERROR Event name can NOT blank!</string>
 
     <string name="due_date_label">Due date : </string>
     <string name="day_left_label">Day left : </string>
+
+    <string name="minutes">minute(s)</string>
+    <string name="hours">hour(s)</string>
     <string name="days">day(s)</string>
     <string name="month">month(s)</string>
+    <string name="year">year(s)</string>
+
+    <string name="no_item">- no items -</string>
+
+    <string name="event_coming_up">The event is coming up!</string>
+
     <string name="left">left</string>
-    <string name="year">years</string>
+    <string name="just_passed">just passed</string>
+    <string name="prefix_passed">passed</string>
+    <string name="ago" >ago</string>
+    <string name="now">JUST NOW!!!</string>
 
-    <string name="no_item"><![CDATA[<< no item >>]]></string>
-    <string name="event_coming_up">An event is coming up!</string>
-
+    <string name="action_search">Search</string>
 </resources>
