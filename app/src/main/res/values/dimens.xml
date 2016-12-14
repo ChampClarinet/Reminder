@@ -3,4 +3,19 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="beyond_text_margin">20dp</dimen>
+    <dimen name="no_item_notice_text_size">20sp</dimen>
+
+    <!-- cardview_layout values -->
+    <dimen name="corner_radius">5dp</dimen>
+    <dimen name="clock_image_size">70dp</dimen>
+    <dimen name="clock_image_left_margin">24dp</dimen>
+    <dimen name="warning_width">41dp</dimen>
+    <dimen name="warning_height">123dp</dimen>
+    <dimen name="text_box_padding">10dp</dimen>
+    <dimen name="card_label_text_size">30sp</dimen>
+
+    <!-- fragment layout values -->
+    <dimen name="fragment_text_size">30sp</dimen>
+
 </resources>

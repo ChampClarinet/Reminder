@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        card_view:cardCornerRadius="5dp">
+        card_view:cardCornerRadius="@dimen/corner_radius">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,18 +22,18 @@
             android:weightSum="100">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="@dimen/clock_image_size"
+                android:layout_height="@dimen/clock_image_size"
                 android:layout_gravity="center"
-                android:layout_margin="24dp"
+                android:layout_margin="@dimen/clock_image_left_margin"
                 android:scaleType="fitXY"
                 android:src="@drawable/alarm_label"
                 tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/warning"
-                android:layout_width="41dp"
-                android:layout_height="123dp"
+                android:layout_width="@dimen/warning_width"
+                android:layout_height="@dimen/warning_height"
                 android:src="@drawable/warn_sign"
                 tools:ignore="ContentDescription" />
 
@@ -42,10 +42,10 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:paddingBottom="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="5dp"
-                android:paddingTop="10dp"
+                android:paddingBottom="@dimen/text_box_padding"
+                android:paddingEnd="@dimen/text_box_padding"
+                android:paddingStart="@dimen/text_box_padding"
+                android:paddingTop="@dimen/text_box_padding"
                 android:weightSum="3">
 
                 <TextView
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="@string/name"
-                    android:textSize="30sp"
+                    android:textSize="@dimen/card_label_text_size"
                     android:textStyle="bold" />
 
                 <TextView

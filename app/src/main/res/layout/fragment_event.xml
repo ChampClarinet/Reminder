@@ -21,10 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/desc_event_title_text_view"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/beyond_text_margin"
+        android:layout_marginTop="@dimen/beyond_text_margin"
         android:text="@string/day_left_label"
-        android:textSize="30sp"
+        android:textSize="@dimen/fragment_text_size"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -32,10 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/desc_event_days_left_text_view"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="@dimen/beyond_text_margin"
+        android:layout_marginTop="@dimen/beyond_text_margin"
         android:text="details"
-        android:textSize="30sp"
+        android:textSize="@dimen/fragment_text_size"
         tools:ignore="HardcodedText" />
 
 </RelativeLayout>

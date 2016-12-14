@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/no_item"
         android:textAlignment="center"
-        android:textSize="20sp" />
+        android:textSize="@dimen/no_item_notice_text_size" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/feedRecycler"
