@@ -52,9 +52,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
         pager = (ViewPager) findViewById(R.id.view_pager);
         pager.setCurrentItem(startPosition);
         pager.setAdapter(adapter);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setBackgroundResource(R.color.danger);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
