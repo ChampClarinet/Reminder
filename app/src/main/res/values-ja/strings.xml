@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_edit">編集</string>
-    <string name="cancel_button">取り消し</string>
+    <string name="cancel_button">戻る</string>
     <string name="confirm_delete_label">削除を確認</string>
     <string name="confirm_delete_message">このイベントを削除でよろしいですか？</string>
     <string name="day_left_label">日後</string>
@@ -30,4 +30,5 @@
     <string name="japanese_toki">時</string>
     <string name="create_dialog_title">イベントを作成</string>
     <string name="edit_dialog_title">イベントを編集</string>
+    <string name="no_button">いいえ</string>
 </resources>

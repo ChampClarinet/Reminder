@@ -30,4 +30,5 @@
     <string name="thai_o_clock">นาฬิกา</string>
     <string name="edit_dialog_title">แก้ไขการนัดหมาย</string>
     <string name="create_dialog_title">สร้างการนัดหมาย</string>
+    <string name="no_button">ไม่</string>
 </resources>

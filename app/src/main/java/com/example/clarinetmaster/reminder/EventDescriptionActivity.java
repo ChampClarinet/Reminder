@@ -68,7 +68,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-                dialog.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton(R.string.no_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
