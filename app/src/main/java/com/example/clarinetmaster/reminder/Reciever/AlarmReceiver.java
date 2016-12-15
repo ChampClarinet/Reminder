@@ -12,7 +12,6 @@ import android.support.v7.app.NotificationCompat;
 import com.example.clarinetmaster.reminder.EventDescriptionActivity;
 import com.example.clarinetmaster.reminder.Models.Event;
 import com.example.clarinetmaster.reminder.R;
-import com.example.clarinetmaster.reminder.Tools.EventList;
 
 public class AlarmReceiver extends BroadcastReceiver{
 
@@ -29,6 +28,7 @@ public class AlarmReceiver extends BroadcastReceiver{
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
+        assert curItem != null;
         Notification notification = builder.setContentTitle(curItem.getTitle())
                 .setTicker(curItem.getTitle())
                 .setContentText(context.getString(R.string.event_coming_up))
@@ -37,7 +37,7 @@ public class AlarmReceiver extends BroadcastReceiver{
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentIntent(pendingIntent)
                 .build();
-        NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+        NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, notification);
 
     }

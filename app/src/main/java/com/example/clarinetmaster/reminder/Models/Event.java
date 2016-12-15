@@ -10,19 +10,19 @@ import java.util.Calendar;
 public class Event implements Serializable{
     private int id;
     private String title;
-    private String detial;
+    private String detail;
     private Calendar date;
 
-    public Event(String title, String detial, Calendar date) {
+    public Event(String title, String detail, Calendar date) {
         this.title = title;
-        this.detial = detial;
+        this.detail = detail;
         this.date = date;
     }
 
-    public Event(int id, String title, String detial, Calendar date) {
+    public Event(int id, String title, String detail, Calendar date) {
         this.id = id;
         this.title = title;
-        this.detial = detial;
+        this.detail = detail;
         this.date = date;
     }
 
@@ -34,8 +34,8 @@ public class Event implements Serializable{
         return title;
     }
 
-    public String getDetial() {
-        return detial;
+    public String getDetail() {
+        return detail;
     }
 
     public Calendar getDate() {

@@ -7,7 +7,6 @@
     <string name="day_left_label">เหลืออีก</string>
     <string name="days">วัน</string>
     <string name="details">รายละเอียด</string>
-    <string name="due_date_label">วันนัดหมาย</string>
     <string name="event_coming_up">ใกล้ถึงเวลาแล้ว</string>
     <string name="event_created">สร้างการนัดหมายแล้ว</string>
     <string name="event_deleted">ลบการนัดหมายแล้ว</string>

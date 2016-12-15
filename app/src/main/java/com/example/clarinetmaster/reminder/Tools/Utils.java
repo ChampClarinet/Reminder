@@ -25,20 +25,24 @@ public class Utils {
         String systemLanguage = Locale.getDefault().getLanguage();
         String date;
 
-        if(systemLanguage.equals(JAPANESE)){
-            date = dateTime.get(Calendar.YEAR) +
-                    context.getString(R.string.year) +
-                    dateTime.get(Calendar.MONTH) +
-                    context.getString(R.string.month) +
-                    dateTime.get(Calendar.DAY_OF_MONTH) +
-                    context.getString(R.string.days);
-        }else if(systemLanguage.equals(THAI)){
-            date = dateTime.get(Calendar.DAY_OF_MONTH) + " " +
-                    dateTime.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " +
-                    dateTime.get(Calendar.YEAR);
-        }else {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            date = dateFormat.format(new Date(dateTime.getTimeInMillis()));
+        switch (systemLanguage) {
+            case JAPANESE:
+                date = dateTime.get(Calendar.YEAR) +
+                        context.getString(R.string.year) +
+                        dateTime.get(Calendar.MONTH) +
+                        context.getString(R.string.month) +
+                        dateTime.get(Calendar.DAY_OF_MONTH) +
+                        context.getString(R.string.days);
+                break;
+            case THAI:
+                date = dateTime.get(Calendar.DAY_OF_MONTH) + " " +
+                        dateTime.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " +
+                        dateTime.get(Calendar.YEAR);
+                break;
+            default:
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+                date = dateFormat.format(new Date(dateTime.getTimeInMillis()));
+                break;
         }
 
         return date;
@@ -49,15 +53,21 @@ public class Utils {
         String systemLanguage = Locale.getDefault().getLanguage();
 
         String time = Integer.toString(dateTime.get(Calendar.HOUR_OF_DAY));
-        if(systemLanguage.equals(JAPANESE)){
-            time += context.getString(R.string.japanese_toki) +
-                    dateTime.get(Calendar.MINUTE) +
-                    context.getString(R.string.minutes);
-        }else if(systemLanguage.equals(THAI)){
-            time += " " + context.getString(R.string.thai_o_clock) +
-                    " " + dateTime.get(Calendar.MINUTE) +
-                    " " + context.getString(R.string.minutes);
-        }else time += ":" + dateTime.get(Calendar.MINUTE);
+        switch (systemLanguage) {
+            case JAPANESE:
+                time += context.getString(R.string.japanese_toki) +
+                        dateTime.get(Calendar.MINUTE) +
+                        context.getString(R.string.minutes);
+                break;
+            case THAI:
+                time += " " + context.getString(R.string.thai_o_clock) +
+                        " " + dateTime.get(Calendar.MINUTE) +
+                        " " + context.getString(R.string.minutes);
+                break;
+            default:
+                time += ":" + dateTime.get(Calendar.MINUTE);
+                break;
+        }
         return time;
     }
 
@@ -103,7 +113,7 @@ public class Utils {
 
     }
 
-    public static int createNotification(Context context, Event event){
+    public static void createNotification(Context context, Event event){
 
         int minutesBeforeEvent = 30;
 
@@ -112,7 +122,7 @@ public class Utils {
         Calendar triggerTime = Calendar.getInstance();
         triggerTime.setTimeInMillis(triggerTimeLong);
 
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Intent serviceIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
 
@@ -126,8 +136,6 @@ public class Utils {
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), broadcast);
 
         Log.i("notificationCreator", "Notification created at "+triggerTime.getTime());
-
-        return notificationID;
 
     }
 

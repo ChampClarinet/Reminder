@@ -23,8 +23,7 @@ public class PagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
         EventList eventList = EventList.getInstance(context);
         Event curItem = eventList.getEventList().get(position);
-        EventFragment fragment = EventFragment.newInstance(curItem.getTitle(), curItem.getDate().getTimeInMillis(), curItem.getDetial());
-        return fragment;
+        return EventFragment.newInstance(curItem.getTitle(), curItem.getDate().getTimeInMillis(), curItem.getDetail());
     }
 
     @Override

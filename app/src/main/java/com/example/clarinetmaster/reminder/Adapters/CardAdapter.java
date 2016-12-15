@@ -50,22 +50,22 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_layout, parent, false);
-        ViewHolder viewHolder = new ViewHolder(v);
-        return viewHolder;
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         EventList eventList = EventList.getInstance(context);
         Event curItem = eventList.getEventList().get(position);
         holder.label.setText(curItem.getTitle());
         holder.date.setText(Utils.dateLabel(context, curItem.getDate()));
         holder.time.setText(Utils.timeLabel(context, curItem.getDate()));
+        final int curPosition = position;
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, EventDescriptionActivity.class);
-                intent.putExtra("curPosition", position);
+                intent.putExtra("curPosition", curPosition);
                 context.startActivity(intent);
             }
         });
@@ -73,6 +73,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         holder.card.setBackgroundResource(colour.getColour(curItem.getDate()));
         if(Utils.getRemainingTimeLong(curItem.getDate()) > 24 * 60 * 60 * 1000 || Utils.getRemainingTimeLong(curItem.getDate()) < 0) holder.warn.setVisibility(View.GONE);
     }
+
     @Override
     public int getItemCount() {
         EventList eventList = EventList.getInstance(context);

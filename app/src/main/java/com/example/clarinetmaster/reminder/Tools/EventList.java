@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.clarinetmaster.reminder.Databases.DatabaseHelper;
@@ -42,20 +41,20 @@ public class EventList {
         this.mContext = context;
     }
 
-    public static void loadFromDatabase(){
+    private static void loadFromDatabase(){
         if(mEventList == null) mEventList = new ArrayList<>();
         else mEventList.clear();
 
         mHelper = new DatabaseHelper(mContext);
         mDb = mHelper.getWritableDatabase();
 
-        Cursor cursor = mDb.query(mHelper.TABLE_NAME, null, null, null, null, null, mHelper.COL_DATE);
+        Cursor cursor = mDb.query(DatabaseHelper.TABLE_NAME, null, null, null, null, null, DatabaseHelper.COL_DATE);
 
         while( cursor.moveToNext() ){
-            int id = cursor.getInt(cursor.getColumnIndex(mHelper.COL_ID));
-            String title = cursor.getString(cursor.getColumnIndex(mHelper.COL_TITLE));
-            String detail = cursor.getString(cursor.getColumnIndex(mHelper.COL_DETAIL));
-            Long dateLong = cursor.getLong(cursor.getColumnIndex(mHelper.COL_DATE));
+            int id = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_ID));
+            String title = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_TITLE));
+            String detail = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_DETAIL));
+            Long dateLong = cursor.getLong(cursor.getColumnIndex(DatabaseHelper.COL_DATE));
             Calendar datetime = Calendar.getInstance();
             datetime.setTimeInMillis(dateLong);
 
@@ -97,7 +96,7 @@ public class EventList {
         mDb = mHelper.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(DatabaseHelper.COL_DATE, event.getDate().getTimeInMillis());
-        cv.put(DatabaseHelper.COL_DETAIL, event.getDetial());
+        cv.put(DatabaseHelper.COL_DETAIL, event.getDetail());
         cv.put(DatabaseHelper.COL_TITLE, event.getTitle());
         mDb.insert(DatabaseHelper.TABLE_NAME, null, cv);
         mDb.close();
@@ -109,7 +108,7 @@ public class EventList {
     public static void updateData(int id, Event event){
         ContentValues cv = new ContentValues();
         cv.put(DatabaseHelper.COL_DATE, event.getDate().getTimeInMillis());
-        cv.put(DatabaseHelper.COL_DETAIL, event.getDetial());
+        cv.put(DatabaseHelper.COL_DETAIL, event.getDetail());
         cv.put(DatabaseHelper.COL_TITLE, event.getTitle());
         mDb = mHelper.getWritableDatabase();
         mDb.update(DatabaseHelper.TABLE_NAME, cv, DatabaseHelper.COL_ID + " = " + id, null);

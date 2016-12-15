@@ -9,10 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,12 +27,11 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView feedRecyclerView;
-    TextView noItemLabel;
+    private TextView noItemLabel;
 
-    Calendar time;
-    DatePickerDialog mDatePicker;
-    TimePickerDialog mTimePicker;
+    private Calendar time;
+    private DatePickerDialog mDatePicker;
+    private TimePickerDialog mTimePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         CardAdapter adapter = new CardAdapter(this);
 
-        feedRecyclerView = (RecyclerView) findViewById(R.id.feedRecycler);
+        RecyclerView feedRecyclerView = (RecyclerView) findViewById(R.id.feedRecycler);
         feedRecyclerView.setHasFixedSize(true);
         feedRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         feedRecyclerView.setAdapter(adapter);
@@ -138,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    TimePickerDialog.OnTimeSetListener onTimeSet = new TimePickerDialog.OnTimeSetListener() {
+    private final TimePickerDialog.OnTimeSetListener onTimeSet = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
             time.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -146,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    DatePickerDialog.OnDateSetListener onDateSet = new DatePickerDialog.OnDateSetListener() {
+    private final DatePickerDialog.OnDateSetListener onDateSet = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
             time.set(year, month, day);

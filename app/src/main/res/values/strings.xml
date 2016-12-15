@@ -18,7 +18,6 @@
     <string name="confirm_delete_message">Are you sure to delete this event?</string>
     <string name="label_blank_toast">ERROR Event name can NOT blank!</string>
 
-    <string name="due_date_label">Due date : </string>
     <string name="day_left_label">Day left : </string>
 
     <string name="minutes">minute(s)</string>

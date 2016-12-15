@@ -7,7 +7,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -115,7 +114,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
         final EditText eventDescEditText = (EditText) layout.findViewById(R.id.detail_edit_text);
 
         eventLabelEditText.setText(curItem.getTitle());
-        eventDescEditText.setText(curItem.getDetial());
+        eventDescEditText.setText(curItem.getDetail());
         time = curItem.getDate();
 
         TimePickerDialog.OnTimeSetListener onTimeSet = new TimePickerDialog.OnTimeSetListener() {
