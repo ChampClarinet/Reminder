@@ -4,7 +4,7 @@
     <string name="cancel_button">戻る</string>
     <string name="confirm_delete_label">削除を確認</string>
     <string name="confirm_delete_message">このイベントを削除でよろしいですか？</string>
-    <string name="day_left_label">日後</string>
+    <string name="day_left_label">残り時間</string>
     <string name="days">日</string>
     <string name="details">細目</string>
     <string name="event_coming_up">最近イベントがある！</string>
