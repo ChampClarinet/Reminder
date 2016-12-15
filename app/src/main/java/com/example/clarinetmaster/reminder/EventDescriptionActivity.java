@@ -161,6 +161,8 @@ public class EventDescriptionActivity extends AppCompatActivity {
             }
         });
 
+        dialog.setTitle(R.string.edit_dialog_title);
+
         dialog.setNeutralButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

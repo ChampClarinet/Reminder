@@ -6,6 +6,9 @@
     <string name="name">Name</string>
     <string name="details">Details</string>
 
+
+    <string name="edit_dialog_title">Edit Event</string>
+    <string name="create_dialog_title">Create New Event</string>
     <string name="cancel_button">CANCEL</string>
     <string name="save_button">SAVE</string>
     <string name="action_edit">EDIT</string>

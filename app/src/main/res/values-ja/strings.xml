@@ -28,4 +28,6 @@
     <string name="minutes">分</string>
     <string name="app_name">リマインダー</string>
     <string name="japanese_toki">時</string>
+    <string name="create_dialog_title">イベントを作成</string>
+    <string name="edit_dialog_title">イベントを編集</string>
 </resources>

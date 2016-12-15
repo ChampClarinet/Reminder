@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        dialog.setTitle(R.string.create_dialog_title);
+
         dialog.setNeutralButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
