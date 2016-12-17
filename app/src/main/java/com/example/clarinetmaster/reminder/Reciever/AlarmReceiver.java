@@ -34,7 +34,7 @@ public class AlarmReceiver extends BroadcastReceiver{
                 .setContentText(context.getString(R.string.event_coming_up))
                 .setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_launcher)
                 .setContentIntent(pendingIntent)
                 .build();
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
